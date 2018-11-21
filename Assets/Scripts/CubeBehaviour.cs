@@ -6,17 +6,11 @@ public class CubeBehaviour : MonoBehaviour
 {
     // public serialized vars
     public float despawnTime;
-    public float maxInitialVelocity;
-    // private vars
-    private Rigidbody rb;
 
     void OnEnable()
     {
-        // initialize rigidbody
-        rb = GetComponent<Rigidbody>();
-
-        // apply random velocity
-        rb.velocity = Random.insideUnitSphere * maxInitialVelocity;
+        // rotate in a random direction, for Style Points™
+        transform.Rotate(Random.insideUnitSphere * 180);
 
         // wait some time before disappearing
         StartCoroutine(DespawnTimer());
