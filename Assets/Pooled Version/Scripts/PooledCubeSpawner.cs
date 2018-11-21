@@ -2,32 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CubeSpawner : MonoBehaviour
+public class PooledCubeSpawner : MonoBehaviour
 {
-    public GameObject prefab;
     public float spawnPeriod;
+    private ObjectPool pool;
 
 	void Start ()
     {
-        // start spawning cubes
+        pool = GetComponent<ObjectPool>();
         StartCoroutine(SpawnCycle());
 	}
 
-    IEnumerator SpawnCycle()
+    IEnumerator SpawnCycle ()
     {
         while (true)
         {
+            // spawn a cube if player is holding mouse1
             if (Input.GetMouseButton(0))
-                SpawnCube();
+            {
+                Poolable obj = pool.Pop();
+                obj.transform.position = transform.position;
+            }
 
             yield return new WaitForSeconds(spawnPeriod);
         }
-    }
-
-    void SpawnCube()
-    {
-        GameObject obj = Instantiate(prefab);
-        obj.transform.parent = transform;
-        obj.transform.position = transform.position;
     }
 }

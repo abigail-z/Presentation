@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CubeBehaviour : MonoBehaviour
+public class PooledCubeBehaviour : Poolable
 {
-    // public serialized vars
     public float despawnTime;
 
-    void OnEnable()
+    void OnEnable ()
     {
         // rotate in a random direction, for Style Points™
         transform.Rotate(Random.insideUnitSphere * 180);
@@ -16,10 +15,10 @@ public class CubeBehaviour : MonoBehaviour
         StartCoroutine(DespawnTimer());
     }
 
-    IEnumerator DespawnTimer()
+    IEnumerator DespawnTimer ()
     {
         yield return new WaitForSeconds(despawnTime);
 
-        Destroy(gameObject);
+        pool.Push(this);
     }
 }
