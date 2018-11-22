@@ -7,7 +7,7 @@ public class CubeSpawner : MonoBehaviour
     public GameObject prefab;
     public float spawnPeriod;
 
-	void Start ()
+	void Awake ()
     {
         StartCoroutine(SpawnCycle());
 	}

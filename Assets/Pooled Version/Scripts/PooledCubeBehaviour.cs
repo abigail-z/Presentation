@@ -5,9 +5,18 @@ using UnityEngine;
 public class PooledCubeBehaviour : Poolable
 {
     public float despawnTime;
+    private Rigidbody rb;
+
+    void Awake ()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     void OnEnable ()
     {
+        // reset velocity
+        rb.velocity = Vector3.zero;
+
         // rotate in a random direction, for Style Points™
         transform.Rotate(Random.insideUnitSphere * 180);
 
