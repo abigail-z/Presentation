@@ -6,7 +6,7 @@ public class CubeBehaviour : MonoBehaviour
 {
     public float despawnTime;
 
-    void OnEnable ()
+    void Start ()
     {
         // rotate in a random direction, for Style Points™
         transform.Rotate(Random.insideUnitSphere * 180);
