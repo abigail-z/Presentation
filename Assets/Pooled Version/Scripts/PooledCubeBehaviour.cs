@@ -15,7 +15,7 @@ public class PooledCubeBehaviour : Poolable
     void OnEnable ()
     {
         // reset velocity
-        rb.velocity = Vector3.zero;
+        rb.velocity = rb.angularVelocity = Vector3.zero;
 
         // rotate in a random direction, for Style Points™
         transform.Rotate(Random.insideUnitSphere * 180);
