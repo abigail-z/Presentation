@@ -20,7 +20,6 @@ public class CubeSpawner : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 GameObject obj = Instantiate(prefab);
-                obj.transform.parent = transform;
                 obj.transform.position = transform.position;
             }
 

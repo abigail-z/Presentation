@@ -15,7 +15,6 @@ public class ObjectPool : MonoBehaviour
 		for (int i = 0; i < initialCount; i++)
         {
             Poolable obj = Instantiate(prefab);
-            obj.transform.parent = transform;
             obj.gameObject.SetActive(false);
             obj.pool = this;
 
